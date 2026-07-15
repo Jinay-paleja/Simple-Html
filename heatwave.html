@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Heat Wave Prediction</title>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: linear-gradient(to right, #ff9a3c, #ff5f6d);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+    }
+
+    .container {
+        background: white;
+        padding: 25px;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        text-align: center;
+        width: 350px;
+    }
+
+    h2 {
+        color: #d84315;
+    }
+
+    input {
+        width: 90%;
+        padding: 10px;
+        margin: 10px 0;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 16px;
+    }
+
+    button {
+        padding: 10px 20px;
+        background: #e64a19;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+    }
+
+    button:hover {
+        background: #bf360c;
+    }
+
+    #result {
+        margin-top: 20px;
+        font-size: 18px;
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h2>🌡 Heat Wave Prediction</h2>
+
+    <input type="number" id="temp" placeholder="Enter Temperature (°C)">
+
+    <button onclick="predictHeatWave()">Predict</button>
+
+    <div id="result"></div>
+</div>
+
+<script>
+function predictHeatWave() {
+    let temp = parseFloat(document.getElementById("temp").value);
+    let result = document.getElementById("result");
+
+    if (isNaN(temp)) {
+        result.innerHTML = "<p style='color:red;'>Please enter a valid temperature.</p>";
+        return;
+    }
+
+    if (temp >= 45) {
+        result.innerHTML = "<h3 style='color:red;'>🔥 Severe Heat Wave</h3><p>Stay indoors, drink plenty of water, and avoid direct sunlight.</p>";
+    } 
+    else if (temp >= 40) {
+        result.innerHTML = "<h3 style='color:orange;'>🌞 Heat Wave Alert</h3><p>Limit outdoor activities and stay hydrated.</p>";
+    } 
+    else if (temp >= 35) {
+        result.innerHTML = "<h3 style='color:goldenrod;'>☀ Moderate Heat</h3><p>Take precautions during the hottest part of the day.</p>";
+    } 
+    else {
+        result.innerHTML = "<h3 style='color:green;'>✅ No Heat Wave</h3><p>Temperature is within a normal range.</p>";
+    }
+}
+</script>
+
+</body>
+</html>
